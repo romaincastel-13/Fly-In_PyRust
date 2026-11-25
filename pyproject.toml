@@ -1,0 +1,28 @@
+[project]
+name = "flyin-pyrust"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.15"
+dependencies = []
+
+[project.scripts]
+flyin-pyrust = "flyin_pyrust:main"
+
+[tool.maturin]
+module-name = "flyin_pyrust._core"
+python-packages = ["flyin_pyrust"]
+features = ["extension-module"]
+python-source = "src"
+
+[tool.uv]
+cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.rs" }, { file = "Cargo.toml" }, { file = "Cargo.lock" }]
+
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[dependency-groups]
+dev = [
+    "maturin>=1.16.0",
+]
